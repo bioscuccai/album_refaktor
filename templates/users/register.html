@@ -1,0 +1,34 @@
+{%extends "../layout.html"%}
+{%block main%}
+<div class="pure-u-1">
+    <div class="pure-u-1-6"></div>
+    <div class="pure-u-4-6">
+<form action="/users/register" method="post" class="pure-form pure-form-stacked">
+    <fieldset><legend>Registration</legend>
+        <label>Name:</label>
+        <input type="text" name="name" value="{{loginInfo.name}}">
+        {% if form.fields.name.error %}
+            <div class="error-field">{{form.fields.name.error}}</div>
+        {% endif %}
+        <label>E-mail:</label>
+        <input type="text" name="email" value="{{loginInfo.email}}">
+        {% if form.fields.email.error %}
+            <div class="error-field">{{form.fields.email.error}}</div>
+        {% endif %}
+        <label>Password:</label>
+        <input type="password" name="password">
+        {% if form.fields.password.error %}
+            <div class="error-field">{{form.fields.password.error}}</div>
+        {% endif %}
+        <label>Password verification:</label>
+        <input type="password" name="password_confirm">
+        {% if form.fields.password_confirm.error %}
+            <div class="error-field">{{form.fields.password_confirm.error}}</div>
+        {% endif %}
+        <input type="submit" value="Register" class="pure-button pure-button-primary">
+    </fieldset>
+</form>
+    </div>
+    <div class="pure-u-1-6"></div>
+</div>
+{%endblock%}

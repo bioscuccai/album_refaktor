@@ -1,0 +1,19 @@
+{%extends "layout.html"%}
+{%block main%}
+<div class="marketing-text-box">
+    <h1>Standard marketing bullshit</h1>
+    <p>marketing bs</p>
+    <p><a href="/upload/0" class="pure-button pure-button-primary">Start uploading now</a></p>
+</div>
+<h1 style="text-align: center">Newest images</h1>
+<div>
+	{%for i in newest%}
+		<div class="pure-u-1-6">
+			<a href="/view/{{i.id}}">
+				<img class="pure-img" src="{{i.thumbPath()}}">
+			</a>
+		</div>
+	{%endfor%}
+
+</div>
+{%endblock%}

@@ -1,0 +1,85 @@
+{%extends "../layout.html"%}
+{%block main%}
+<div>
+    <img src="/images/url/{{image.id}}/full" class="pic-full">
+</div>
+<div class="pic-info-box">
+    <div class="pure-u-1-1">
+        <div class="pure-u-16-24">
+            <p class="picture-description">
+                {%if image.description %}
+                    {{image.description}}
+                {%else%}
+                    <i>No description given.</i>
+                {%endif%}
+            </p>
+        </div>
+        <div class="pure-u-7-24">
+            <dl>
+                <dt>
+                    Uploader:
+                </dt>
+                <dd>
+                    {%if image.User%}
+                        {{image.User.name}}
+                    {% else %}
+                        <i>guest</i>
+                    {% endif %}
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+</div>
+{% if image.Album %}
+	<div class="pure-u-1" style="margin-top: 3px; margin-bottom: 3px; background-color: #ECECEC">
+		<div class="pure-u-8-24">
+			{%if prevImage%}
+				<a href="/images/{{prevImage.id}}">
+					<span class="album-arrow album-arrow-left">&laquo;</span>
+					<img src="/images/url/{{prevImage.id}}/thumb">
+				</a>
+			{%endif%}
+		</div>
+
+		<div class="pure-u-7-24" style="text-align: center">
+			<a href="/albums/{{image.Album.id}}"><h3>{{image.Album.title}}</h3></a>
+
+			<!--<p><strong>{{imageIndex+1}} / {{albumSize}}</strong></p>-->
+		</div>
+
+		<div class="pure-u-8-24" style="float: right">
+			{%if nextImage%}
+				<a href="/images/{{nextImage.id}}">
+					<span class="album-arrow album-arrow-right">&raquo;</span>
+					<img src="/images/url/{{nextImage}}/full" style="float: right">
+				</a>
+			{%endif%}
+		</div>
+	</div>
+{% endif %}
+<br style="clear: both">
+{%if currentUser%}
+<div class="comment-box">
+    <form action="/comments/{{image.id}}" method="post" class="pure-form-stacked">
+        <fieldset>
+            <legend><h1>Post a comment</h1></legend>
+            <p>Logged in as <strong>{{currentUser.name}}</strong></p>
+            {{form.toHTML()}}
+            <input type="submit" value="Send" class="pure-button pure-button-primary">
+        </fieldset>
+    </form>
+</div>
+{%endif%}
+<div>
+    {% for c in comments %}
+    <a name="comment-{{c.id}}"></a>
+    <blockquote>
+        {{c.comment_text}}
+        <cite>
+            {{c.User.name}} | {{c.created_at.toLocaleDateString()}} {{c.created_at.toLocaleTimeString()}}
+        </cite>
+    </blockquote>
+    {%endfor%}
+</div>
+{%endblock%}

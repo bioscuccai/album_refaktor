@@ -1,0 +1,16 @@
+{%extends "../layout.html"%}
+{%block main%}
+<h1>{{album.title}}</h1>
+<div>
+	{%for p in album.UploadedImages%}
+		<div class="pure-u-1-6">
+			<a href="/images/{{p.id}}">
+				<img class="pure-img" src="/images/url/{{p.id}}/thumb">
+			</a>
+		</div>
+	{%endfor%}
+</div>
+{%if current_user==album.creator%}
+	<a href="/images/new?album={{album.id}}" class="pure-button pure-button-primary">Upload</a>
+{%endif%}
+{%endblock%}

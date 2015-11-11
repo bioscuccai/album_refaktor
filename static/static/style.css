@@ -1,0 +1,148 @@
+div{
+    box-sizing: border-box;
+}
+
+.thumb_image{
+    float:left;
+}
+.thumb-small{
+    padding: 3px;
+}
+
+.pic-full{
+    max-width: 100%;
+}
+
+.pic-info-box{
+    margin: 2px;
+    padding: 5px;
+    width:100%;
+    background-color: #DCDCDC;
+    border: #C3C3C3 3px solid;
+
+}
+dt{
+    font-weight: bold;
+}
+.comment-box{
+    display: inline-block;
+    width: 100%;
+}
+.comment-box form textarea{
+    width: 100%;
+    height: 200px;
+}
+.picture-description{
+    font-style: italic;
+}
+
+/*
+ * Flash
+*/
+.flash-box{
+    border-radius: 5px;
+    text-align: center;
+    width: 100%;
+}
+.flash-info-box{
+    background-color: #00FFAE;
+    border: 10px solid #00FFAE;
+}
+.flash-error-box{
+    background-color: #FF474A;
+    border: 10px solid #FF474A;
+}
+
+
+.marketing-text-box{
+    padding: 10px;
+    width: 100%;
+    background-color: #00FFAE;
+    border-radius: 5px;
+    border: 10px solid #00FFAE;
+    font-size: 20px;
+    color: #666666;
+    text-align: center;
+}
+
+.upload-text-box{
+    width: 100%;
+    margin: 0 auto;
+    background-color: #DCDCDC;
+    border-radius: 5px;
+    border: #DCDCDC solid 5px;
+    color: #252525;
+    padding: 20px;
+}
+
+.upload-text-box form fieldset textarea{
+    width: 100%;
+    height: 200px;
+}
+.marketing-text-box h1{
+    color: #666666;
+}
+
+a{
+    text-decoration: none;
+    color: #0078e7;
+}
+
+.fresh-image{
+    padding: 3px;
+}
+
+.error-field{
+    font-size: 80%;
+    color: lightcoral;
+}
+
+.toplist-image{
+    vertical-align: middle;
+}
+
+.upload-error{
+    display:none;
+}
+
+.upload-info{
+    display: none;
+}
+
+.album-arrow{
+    font-size: 50px;
+    margin-top: 60px;
+    float: left;
+    display: block
+}
+
+.album-arrow-left{
+    float: left;
+}
+
+.album-arrow-right{
+    float: right;
+}
+
+.top-menu{
+    width: 100%;
+    text-align: center;
+    background-color: rgba(220, 220, 220, 0.8);
+    margin-bottom: 5px;
+    position: fixed;
+    top: 0;
+}
+
+textarea{
+    resize: none;
+}
+
+.paginator-bar{
+    margin-top: 10px;
+    clear: both;
+    text-align: center;
+}
+.image-state-box{
+    box-sizing: border-box;
+    border: 1px solid #EAEAEA;
+}

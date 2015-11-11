@@ -1,0 +1,18 @@
+{%extends "../layout.html"%}
+{% block main %}
+{% if currentUser %}
+<h1>Albums</h1>
+<div class="pure-u-1">
+	<a href="/albums/new" class="pure-button pure-button-primary">New album</a>
+</div>
+{%endif%}
+{%for album in albums%}
+	<div class="pure-u-1-6">
+		<a href="/albums/{{album.id}}">
+			<img class="pure-img" src="{{album.coverPath()}}">
+			<p style="text-align: center">{{album.title}}</p>
+		</a>
+		<p>{{album.creator.name}}</p>
+	</div>
+{%endfor%}
+{%endblock%}

@@ -1,0 +1,9 @@
+{%extends "../layout.html"%}
+{%block main%}
+<form action="/albums" method="post" class="pure-form pure-form-stacked">
+    <fieldset><legend>New album</legend>
+        {{form.toHTML()}}
+        <input type="submit" value="New album" class="pure-button pure-button-primary">
+    </fieldset>
+</form>
+{%endblock%}

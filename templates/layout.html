@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Uploader app</title>
+  <link rel="stylesheet" href="/static/bower/pure/pure-min.css" type="text/css">
+  <link rel="stylesheet" href="/static/bower/pure/grids-responsive-min.css" type="text/css">
+  <script type="text/javascript" src="/static/bower/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/script.js"></script>
+  <link rel="stylesheet" href="/static/style.css" type="text/css">
+</head>
+<body>
+  <div style="height: 40px"></div>
+  <div class="pure-menu pure-menu-horizontal top-menu">	<ul class="pure-menu-list">
+    <li class="pure-menu-item"><a href="/" class="pure-menu-link">Home</a></li>
+    <li class="pure-menu-item"><a href="/images/new" class="pure-menu-link">Upload</a></li>
+    <li class="pure-menu-item"><a href="/albums" class="pure-menu-link">Albums</a></li>
+    <li class="pure-menu-item"><a href="/images" class="pure-menu-link">Images</a></li>
+    {%if currentUser%}
+    <!--<li class="pure-menu-item"><a href="/my_albums" class="pure-menu-link">My albums</a></li>-->
+    <li class="pure-menu-item"><a href="/users/logout" class="pure-menu-link">Logout</a></li>
+    {%else%}
+    <li class="pure-menu-item"><a href="/users/login" class="pure-menu-link">Login</a></li>
+    <li class="pure-menu-item"><a href="/users/register" class="pure-menu-link">Register</a></li>
+    {%endif%}
+  </ul>
+</div>
+
+<div class="pure-g">
+  <div class="pure-u-1-24"> </div>
+  <div class="pure-u-18-24">
+    {% for message in messages %}
+    <div class="pure-u-1-1 flash-box flash-info-box">
+      {{message}}
+    </div>
+    {% endfor %}
+    {% for error in errors %}
+    <div class="pure-u-1-1 flash-box flash-error-box">
+      {{error}}
+    </div>
+    {% endfor %}
+    
+    {%block main%}
+    {% endblock %}
+  </div>
+  <div class="pure-u-4-24">
+    <div id="popular-bar" style="padding: 3px; text-align: center;">
+      <h3>Most popular</h3>
+      <h5>Images</h5>
+      {%for img in mostPopularImages%}
+      <a href="/images/{{img.id}}" class="pure-img toplist-image"><img src="/images/url/{{img.id}}/thumb"></a>
+      {%endfor%}
+      <h5>Albums</h5>
+      {%for alb in mostPopularAlbums%}
+      <a href="/albums/{{alb.id}}"><img src="{{alb.coverPath()}}"></a>
+      <p>
+        <a href="/albums/{{alb.id}}" class="pure-img toplist-image">
+          <h3>{{alb.title}}</h3>
+        </a>
+      </p>
+      {%endfor%}
+    </div>
+  </div>
+  <div class="pure-u-1-24"></div>
+  
+</div>
+{%block js%}
+{%endblock%}
+</body>
+</html>

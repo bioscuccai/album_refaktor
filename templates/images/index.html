@@ -1,0 +1,20 @@
+{%extends "../layout.html"%}
+{%block main%}
+<h1>Images</h1>
+{%for i in images%}
+  <div class="pure-u-1-6 thumb-image">
+    <a href="/images/{{i.id}}">
+      <img class="pure-img" src="/images/url/{{i.id}}/thumb">
+    </a>
+  </div>
+{%endfor%}
+<div style="clear: both; text-align: center">
+  {% if start!=0 %}
+    <a href="/images?start={{(start - paginatePage)}}">Prev</a>
+  {%endif%}
+    <strong>{{start}} - {{parseInt(start) + parseInt(paginatePage)}}</strong> <strong>({{count}} total)</strong>
+  {% if parseInt(start) + parseInt(paginatePage) < count %}
+    <a href="/images?start={{parseInt(start) + parseInt(paginatePage)}}">Next</a>
+  {%endif%}
+</div>
+{%endblock%}

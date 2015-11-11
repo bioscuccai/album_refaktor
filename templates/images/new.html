@@ -1,0 +1,30 @@
+{%extends "../layout.html"%}
+{%block main%}
+<div class="flash-box flash-error-box upload-error">
+  Upload failed
+</div>
+<div class="flash-box flash-info-box upload-info">
+  Upload finished
+</div>
+<div class="upload-text-box">
+  <form id="upload-form" method="post" action="/images/upload_for_watcher?album={{album_id}}" enctype='multipart/form-data' class="pure-form pure-form-stacked" data-album-id="{{album}}">
+    <fieldset>
+      <legend><h1>Upload</h1></legend>
+      <label for=""><input type="text" name="name" value="aaaaaaaaaaaaaaaaaaaaaaaaaaa"></label>
+      <label>Description:</label><textarea name="description" id="upload-textarea">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</textarea>
+      <label>Image:</label><input type="file" name="image" id="image">
+      <input type="submit" value="Upload" class="pure-button pure-button-primary"><br>
+    </fieldset>
+  </form>
+</div>
+<span id="upload-status"></span>
+<!--
+<span id="fresh-uploads">
+  <h1>Newly uploaded</h1>
+</span>-->
+{%endblock%}
+
+{%block js%}
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="/static/upload_script.js"></script>
+{%endblock%}

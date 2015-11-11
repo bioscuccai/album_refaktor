@@ -1,0 +1,18 @@
+{%extends "../layout.html"%}
+{%block main%}
+<form action="/users/login" method="post" class="pure-form pure-form-stacked">
+    <fieldset><legend>Login</legend>
+        <label>E-mail:</label>
+        <input type="text" name="email" value="{{loginInfo.email}}">
+        {% if form.fields.email.error %}
+            <div class="error-field">{{form.fields.email.error}}</div>
+        {% endif %}
+        <label>Password:</label>
+        <input type="password" name="password">
+        {% if form.fields.password.error %}
+            <div class="error-field">{{form.fields.password.error}}</div>
+        {% endif %}
+        <input type="submit" value="Login" class="pure-button pure-button-primary">
+    </fieldset>
+</form>
+{%endblock%}
