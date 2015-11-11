@@ -198,6 +198,10 @@ var UploadedImage=function (sequelize, DataTypes) {
       mostPopular:{
         order: "views DESC",
         limit: 4
+      },
+      home:{
+        order: "created_at DESC",
+        limit: 12
       }
     }
   });

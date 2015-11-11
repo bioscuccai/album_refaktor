@@ -22,8 +22,11 @@ function receiveImage(image){
     })
     .then(name=>{
       console.log(name);
-      fs.writeFileAsync(name, image.imageData.buffer);
-      return uploadStrategies.processImage(_.merge({}, image, {path: name}), config.uploadStrategy);
+      tmpName=name;
+      return fs.writeFileAsync(name, image.imageData.buffer);
+    })
+    .then(()=>{
+      return uploadStrategies.processImage(_.merge({}, image, {path: tmpName}), config.uploadStrategy);
     })
     .then(uploadRes=>{
       resolve();
